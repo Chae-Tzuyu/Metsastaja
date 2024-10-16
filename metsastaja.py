@@ -223,7 +223,7 @@ def main():
 
     if kml_fname is not None:
         SITE = template_select(SITE)
-        utils.print(f'{G}[>] {C]KML-tiedosto: {W}{kml_fname}')
+utils.print(f'{G}[>] {C}KML-tiedosto: {W}{kml_fname}')
 
     proc = server()
 

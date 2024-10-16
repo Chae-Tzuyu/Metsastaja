@@ -9,14 +9,14 @@ mkdir -p $LOG_DIR $DB_DIR
 status_check() {
     if [ $? -eq 0 ]
     then
-        echo -e "$1 - Installed"
+        echo -e "$1 - Asennettu"
     else
-        echo -e "$1 - Failed!"
+        echo -e "$1 - Epäonnistui!"
     fi
 }
 
 debian_install() {
-    echo -e '=====================\nINSTALLING FOR DEBIAN\n=====================\n' > "$ILOG"
+    echo -e '=====================\nASENNETAAN DEBIANILLE\n=====================\n' > "$ILOG"
 
     pkgs="python3 python3-pip python3-requests python3-packaging python3-psutil php"
 
@@ -33,7 +33,7 @@ debian_install() {
 }
 
 fedora_install() {
-    echo -e '=====================\nINSTALLING FOR FEDORA\n=====================\n' > "$ILOG"
+    echo -e '=====================\nASENNETAAN FEDORALLE\n=====================\n' > "$ILOG"
 
     pkgs="python3 python3-pip python3-requests python3-packaging python3-psutil php"
 
@@ -50,7 +50,7 @@ fedora_install() {
 }
 
 termux_install() {
-    echo -e '=====================\nINSTALLING FOR TERMUX\n=====================\n' > "$ILOG"
+    echo -e '=====================\nASENNETAAN TERMUXILLE\n=====================\n' > "$ILOG"
 
     pkgs="python php"
     pip_pkgs="requests packaging psutil"
@@ -79,7 +79,7 @@ termux_install() {
 }
 
 arch_install() {
-    echo -e '=========================\nINSTALLING FOR ARCH LINUX\n=========================\n' > "$ILOG"
+    echo -e '=========================\nASENNETAAN ARCH LINUXILLE\n=========================\n' > "$ILOG"
 
     install_cmd() {
         echo -ne "$1\r"
@@ -95,7 +95,7 @@ arch_install() {
     done
 }
 
-echo -e '[!] Installing Dependencies...\n'
+echo -e '[!] Asennetaan riippuvuuksia...\n'
 
 if [ -f '/etc/arch-release' ]; then
     arch_install
@@ -109,6 +109,6 @@ else
     fi
 fi
 
-echo -e '=========\nCOMPLETED\n=========\n' >> "$ILOG"
+echo -e '=========\nVALMIS\n=========\n' >> "$ILOG"
 
-echo -e '\n[+] Log Saved :' "$ILOG"
+echo -e '\n[+] Lokitiedosto tallennettu :' "$ILOG"

